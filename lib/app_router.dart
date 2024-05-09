@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_comp_go_router/screens/details_page.dart';
+import 'package:flutter_comp_go_router/screens/profile_page.dart';
 import 'package:go_router/go_router.dart';
 import 'screens/home_page.dart';
 
@@ -19,6 +20,13 @@ class AppRouter {
             final int itemId = int.tryParse(params ?? '') ?? 0;
             return DetailsPage(itemId: itemId);
           }),
+      GoRoute(path: '/profile/:userId',
+      builder: (BuildContext context, GoRouterState state){
+        final params = state.pathParameters['userId'];
+        // Here we are making sure that the userId is an integer for Type Safety
+        final int userId = int.tryParse(params ?? '') ?? 0;
+        return ProfilePage(userId: userId);
+      }),
     ],
   );
 }
