@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_comp_go_router/screens/dashboard_page.dart';
 import 'package:flutter_comp_go_router/screens/details_page.dart';
 import 'package:flutter_comp_go_router/screens/profile_page.dart';
+import 'package:flutter_comp_go_router/screens/tab_screens.dart';
 import 'package:flutter_comp_go_router/screens/users_page.dart';
 import 'package:go_router/go_router.dart';
 import 'screens/home_page.dart';
@@ -38,6 +40,28 @@ class AppRouter {
             final String? filter = state.uri.queryParameters['filter'];
             return UsersScreen(filter: filter);
           }),
+
+      GoRoute(
+          path: '/dashboard',
+          builder: (BuildContext context, GoRouterState state) =>
+              const DashboardPage(),
+          routes: [
+            GoRoute(
+              path: 'home',
+              builder: (BuildContext context, GoRouterState state) =>
+                  const HomeTabScreen(),
+            ),
+            GoRoute(
+              path: 'settings',
+              builder: (BuildContext context, GoRouterState state) =>
+                  const SettingsTabScreen(),
+            ),
+            GoRoute(
+              path: 'profile',
+              builder: (BuildContext context, GoRouterState state) =>
+                  const ProfileTabScreen(),
+            ),
+          ]),
     ],
   );
 }

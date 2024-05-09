@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'app_router.dart';
-import 'package:flutter_web_plugins/flutter_web_plugins.dart';
+import 'package:flutter_web_plugins/url_strategy.dart';
+import 'package:flutter/foundation.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  if(kIsWeb) {
+    usePathUrlStrategy();
+  }
   runApp(const MyApp());
-  usePathUrlStrategy();
 }
 
 class MyApp extends StatelessWidget {
