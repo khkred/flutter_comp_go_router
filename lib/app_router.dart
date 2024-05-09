@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_comp_go_router/screens/dashboard_page.dart';
 import 'package:flutter_comp_go_router/screens/details_page.dart';
+import 'package:flutter_comp_go_router/screens/error_page.dart';
 import 'package:flutter_comp_go_router/screens/login_page.dart';
 import 'package:flutter_comp_go_router/screens/profile_page.dart';
 import 'package:flutter_comp_go_router/screens/tab_screens.dart';
@@ -11,6 +12,9 @@ import 'screens/home_page.dart';
 
 class AppRouter {
   static final GoRouter router = GoRouter(
+    errorBuilder: (BuildContext context, GoRouterState state) => ErrorPage(
+      error: state.error?.toString(),
+    ),
     routes: [
       GoRoute(
         path: '/',
