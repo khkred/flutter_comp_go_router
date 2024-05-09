@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_comp_go_router/screens/dashboard_page.dart';
 import 'package:flutter_comp_go_router/screens/details_page.dart';
 import 'package:flutter_comp_go_router/screens/profile_page.dart';
+import 'package:flutter_comp_go_router/screens/tab_screens.dart';
 import 'package:flutter_comp_go_router/screens/users_page.dart';
 import 'package:go_router/go_router.dart';
 import 'screens/home_page.dart';
@@ -48,17 +49,17 @@ class AppRouter {
             GoRoute(
               path: 'home',
               builder: (BuildContext context, GoRouterState state) =>
-                  const Center(child: Text("Home Tab Content")),
+                  const HomeTabScreen(),
             ),
             GoRoute(
               path: 'settings',
               builder: (BuildContext context, GoRouterState state) =>
-                  const Center(child: Text("Settings Tab Content")),
+                  const SettingsTabScreen(),
             ),
             GoRoute(
               path: 'profile',
               builder: (BuildContext context, GoRouterState state) =>
-                  const Center(child: Text("Profile Tab Content")),
+                  const ProfileTabScreen(),
             ),
           ]),
     ],
