@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_comp_go_router/screens/dashboard_page.dart';
 import 'package:flutter_comp_go_router/screens/details_page.dart';
+import 'package:flutter_comp_go_router/screens/login_page.dart';
 import 'package:flutter_comp_go_router/screens/profile_page.dart';
 import 'package:flutter_comp_go_router/screens/tab_screens.dart';
 import 'package:flutter_comp_go_router/screens/users_page.dart';
 import 'package:go_router/go_router.dart';
+import 'global/global.dart';
 import 'screens/home_page.dart';
 
 class AppRouter {
@@ -42,9 +44,21 @@ class AppRouter {
           }),
 
       GoRoute(
+        path: '/login',
+        builder: (BuildContext context, GoRouterState state) =>
+            const LoginPage(),
+      ),
+
+      GoRoute(
           path: '/dashboard',
           builder: (BuildContext context, GoRouterState state) =>
               const DashboardPage(),
+          redirect: (BuildContext context, GoRouterState state) {
+            if (!isLoggedIn) {
+              return '/login'; // Redirect to login if not authenticated
+            }
+            return null; // No redirection if authenticated
+          },
           routes: [
             GoRoute(
               path: 'home',
