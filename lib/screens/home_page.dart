@@ -10,10 +10,12 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final TextEditingController _detailsPageIdController = TextEditingController();
+  final TextEditingController _usersPageFilterController = TextEditingController();
 
   @override
   void dispose() {
     _detailsPageIdController.dispose();
+    _usersPageFilterController.dispose();
     super.dispose();
   }
 
@@ -41,7 +43,21 @@ class _HomePageState extends State<HomePage> {
                 // Call setState to rebuild the widget with the new button
                 setState(() {});
               },
-            ),)
+            ),),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TextField(
+                controller: _usersPageFilterController,
+                decoration: InputDecoration(
+                  hintText: 'Add a filter',
+                  border: const OutlineInputBorder(),
+                  suffixIcon: IconButton(
+                    icon: const Icon(Icons.search),
+                    onPressed: _navigateToUsers,
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
       ),
@@ -70,6 +86,15 @@ class _HomePageState extends State<HomePage> {
           ),
         );
       }
+    }
+  }
+
+  void _navigateToUsers() {
+    final filter = _usersPageFilterController.text;
+    if (filter.isNotEmpty) {
+      context.push('/users?filter=$filter');
+    } else {
+      context.push('/users');
     }
   }
 
