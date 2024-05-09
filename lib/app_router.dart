@@ -21,19 +21,23 @@ class AppRouter {
             final int itemId = int.tryParse(params ?? '') ?? 0;
             return DetailsPage(itemId: itemId);
           }),
-      GoRoute(path: '/profile/:userId',
-      builder: (BuildContext context, GoRouterState state){
-        final params = state.pathParameters['userId'];
-        // Here we are making sure that the userId is an integer for Type Safety
-        final int userId = int.tryParse(params ?? '') ?? 0;
-        return ProfilePage(userId: userId);
-      }),
+
+      GoRoute(
+          path: '/profile/:userId',
+          builder: (BuildContext context, GoRouterState state) {
+            final params = state.pathParameters['userId'];
+            // Here we are making sure that the userId is an integer for Type Safety
+            final int userId = int.tryParse(params ?? '') ?? 0;
+            return ProfilePage(userId: userId);
+          }),
+
       // Pay Attention to this route as it has a query parameter and the filter is passed to the UsersScreen
-      GoRoute(path: '/users',
-      builder: (BuildContext context, GoRouterState state){
-        final String? filter = state.uri.queryParameters['filter'];
-        return UsersScreen(filter: filter);
-      }),
+      GoRoute(
+          path: '/users',
+          builder: (BuildContext context, GoRouterState state) {
+            final String? filter = state.uri.queryParameters['filter'];
+            return UsersScreen(filter: filter);
+          }),
     ],
   );
 }
