@@ -21,15 +21,22 @@ class AppRouter {
         builder: (BuildContext context, GoRouterState state) =>
             const HomePage(),
       ),
-
       GoRoute(
-          path: '/details/:itemId',
-          builder: (BuildContext context, GoRouterState state) {
-            final params = state.pathParameters['itemId'];
-            final int itemId = int.tryParse(params ?? '') ?? 0;
-            return DetailsPage(itemId: itemId);
-          }),
-
+        path: '/details/:itemId',
+        //This is Where custom Transition is used
+        pageBuilder: (BuildContext context, GoRouterState state) {
+          final params = state.pathParameters['itemId'];
+          final int itemId = int.tryParse(params ?? '') ?? 0;
+          return CustomTransitionPage(
+            key: state.pageKey,
+            child: DetailsPage(itemId: itemId),
+            //We are using Fade Transition here
+            transitionsBuilder: (context, animation, secondaryAnimation, child) {
+              return FadeTransition(opacity: animation, child: child);
+            },
+          );
+        }
+      ),
       GoRoute(
           path: '/profile/:userId',
           builder: (BuildContext context, GoRouterState state) {
