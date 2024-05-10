@@ -14,6 +14,7 @@ Each link below leads directly to a branch showcasing a specific routing concept
 - [query_parameters](https://github.com/khkred/flutter_comp_go_router/tree/query_parameters) - Focuses on handling query parameters in routes to filter or pass data.
 - [redirection_and_guards](https://github.com/khkred/flutter_comp_go_router/tree/redirection_and_guards) - Demonstrates the use of redirection and guards to manage access to certain parts of the app based on conditions like user authentication.
 - [type_safety_and_parameters](https://github.com/khkred/flutter_comp_go_router/tree/type_safety_and_parameters) - Showcases type safety and parameter handling in routes to ensure the correct type and existence of required data.
+- [custom_transition](https://github.com/khkred/flutter_comp_go_router/tree/custom_transition) - Demonstrates how to implement custom transitions between routes using GoRouter.
 
 ## Getting Started
 
