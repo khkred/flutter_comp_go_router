@@ -31,7 +31,7 @@ class _HomePageState extends State<HomePage> {
             controller: _detailsPageIdController,
             keyboardType: TextInputType.number,  // Set the keyboard type to numeric
             decoration: InputDecoration(
-              hintText: 'Enter an item ID',
+              hintText: 'Enter an item ID for details page',
               border: const OutlineInputBorder(),
               suffixIcon: _detailsPageIdController.text.isNotEmpty ? IconButton(
                 icon: const Icon(Icons.arrow_forward),
