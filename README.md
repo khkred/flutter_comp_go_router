@@ -21,7 +21,7 @@ Each link below leads directly to a branch showcasing a specific routing concept
 To get started with this project, clone the repository and check out the branch that corresponds to the feature you are interested in:
 
 ```bash
-git clone https://github.com/your-username/flutter_comp_go_router.git
+git clone https://github.com/khkred/flutter_comp_go_router.git
 cd flutter_comp_go_router
 git checkout [branch-name]```
 
