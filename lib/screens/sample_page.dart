@@ -16,7 +16,7 @@ class SamplePage extends StatelessWidget {
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                context.go('/'); // This will navigate to the home page
+                context.goNamed('home'); // This will navigate to the home page
               },
               child: const Text('Go to Home Page'),
             ),
