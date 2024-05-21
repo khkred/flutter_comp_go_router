@@ -112,7 +112,11 @@ class _HomePageState extends State<HomePage> {
   void _navigateToUsers() {
     final filter = _usersPageFilterController.text;
     if (filter.isNotEmpty) {
-      context.push('/users?filter=$filter');
+      //context.push('/users?filter=$filter');
+      context.pushNamed(
+        'users',
+        queryParameters: {'filter': filter},
+      );
     } else {
       context.push('/users');
     }

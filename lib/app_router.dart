@@ -59,6 +59,7 @@ class AppRouter {
       // Pay Attention to this route as it has a query parameter and the filter is passed to the UsersScreen
       GoRoute(
           path: '/users',
+          name: 'users',
           builder: (BuildContext context, GoRouterState state) {
             final String? filter = state.uri.queryParameters['filter'];
             return UsersScreen(filter: filter);
