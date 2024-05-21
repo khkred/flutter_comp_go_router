@@ -9,8 +9,10 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final TextEditingController _detailsPageIdController = TextEditingController();
-  final TextEditingController _usersPageFilterController = TextEditingController();
+  final TextEditingController _detailsPageIdController =
+      TextEditingController();
+  final TextEditingController _usersPageFilterController =
+      TextEditingController();
 
   @override
   void dispose() {
@@ -22,27 +24,34 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Home Page'),),
-      body:  Column(
+      appBar: AppBar(
+        title: const Text('Home Page'),
+      ),
+      body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Padding(padding: const EdgeInsets.all(8.0),
-          child: TextField(
-            controller: _detailsPageIdController,
-            keyboardType: TextInputType.number,  // Set the keyboard type to numeric
-            decoration: InputDecoration(
-              hintText: 'Enter an item ID for details page',
-              border: const OutlineInputBorder(),
-              suffixIcon: _detailsPageIdController.text.isNotEmpty ? IconButton(
-                icon: const Icon(Icons.arrow_forward),
-                onPressed: _navigateToDetails,
-              ) : null,
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: TextField(
+              controller: _detailsPageIdController,
+              keyboardType: TextInputType.number,
+              // Set the keyboard type to numeric
+              decoration: InputDecoration(
+                hintText: 'Enter an item ID for details page',
+                border: const OutlineInputBorder(),
+                suffixIcon: _detailsPageIdController.text.isNotEmpty
+                    ? IconButton(
+                        icon: const Icon(Icons.arrow_forward),
+                        onPressed: _navigateToDetails,
+                      )
+                    : null,
+              ),
+              onChanged: (value) {
+                // Call setState to rebuild the widget with the new button
+                setState(() {});
+              },
             ),
-            onChanged: (value) {
-              // Call setState to rebuild the widget with the new button
-              setState(() {});
-            },
-          ),),
+          ),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: TextField(
@@ -57,11 +66,15 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           ),
-          Padding(padding: const EdgeInsets.all(8.0),
-          child: ElevatedButton(onPressed: (){
-            context.go('/dashboard');
-          }, child: const Text('Go to Dashboard'),
-          ),),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ElevatedButton(
+              onPressed: () {
+                context.go('/dashboard');
+              },
+              child: const Text('Go to Dashboard'),
+            ),
+          ),
         ],
       ),
     );
@@ -72,7 +85,11 @@ class _HomePageState extends State<HomePage> {
       final itemId = int.tryParse(_detailsPageIdController.text);
       if (itemId != null) {
         //We are going to the details page with the item ID
-        context.push('/details/$itemId');
+        //context.push('/details/$itemId');
+        context.pushNamed(
+          'details',
+          pathParameters: {'itemId': '$itemId'},
+        );
       } else {
         // Error handling for non-numeric input
         showDialog(
@@ -100,5 +117,4 @@ class _HomePageState extends State<HomePage> {
       context.push('/users');
     }
   }
-
 }

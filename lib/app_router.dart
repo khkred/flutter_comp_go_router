@@ -31,6 +31,7 @@ class AppRouter {
 
 
       GoRoute(
+        name: 'details',
         path: '/details/:itemId',
         //This is Where custom Transition is used
         pageBuilder: (BuildContext context, GoRouterState state) {
