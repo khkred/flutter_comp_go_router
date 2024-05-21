@@ -1,18 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_comp_go_router/screens/details_page.dart';
 import 'package:flutter_comp_go_router/screens/profile_page.dart';
+import 'package:flutter_comp_go_router/screens/sample_page.dart';
 import 'package:flutter_comp_go_router/screens/users_page.dart';
 import 'package:go_router/go_router.dart';
 import 'screens/home_page.dart';
 
 class AppRouter {
   static final GoRouter router = GoRouter(
+    initialLocation: '/sample',
     routes: [
       GoRoute(
         path: '/',
         builder: (BuildContext context, GoRouterState state) =>
             const HomePage(),
       ),
+      GoRoute(path: '/sample',
+        builder: (BuildContext context, GoRouterState state) => const SamplePage(),),
 
       GoRoute(
           path: '/details/:itemId',
