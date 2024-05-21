@@ -4,7 +4,9 @@ import 'package:flutter_comp_go_router/screens/details_page.dart';
 import 'package:flutter_comp_go_router/screens/error_page.dart';
 import 'package:flutter_comp_go_router/screens/login_page.dart';
 import 'package:flutter_comp_go_router/screens/profile_page.dart';
+import 'package:flutter_comp_go_router/screens/sample_page.dart';
 import 'package:flutter_comp_go_router/screens/tab_screens.dart';
+
 import 'package:flutter_comp_go_router/screens/users_page.dart';
 import 'package:go_router/go_router.dart';
 import 'global/global.dart';
@@ -12,15 +14,21 @@ import 'screens/home_page.dart';
 
 class AppRouter {
   static final GoRouter router = GoRouter(
+    initialLocation: '/sample',
     errorBuilder: (BuildContext context, GoRouterState state) => ErrorPage(
       error: state.error?.toString(),
     ),
+
     routes: [
       GoRoute(
         path: '/',
         builder: (BuildContext context, GoRouterState state) =>
             const HomePage(),
       ),
+      GoRoute(path: '/sample',
+        builder: (BuildContext context, GoRouterState state) => const SamplePage(),),
+
+
       GoRoute(
         path: '/details/:itemId',
         //This is Where custom Transition is used
