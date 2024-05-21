@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_comp_go_router/screens/tab_screens.dart';
 
 class DashboardPage extends StatelessWidget {
   const DashboardPage({super.key});
@@ -20,9 +21,9 @@ class DashboardPage extends StatelessWidget {
         ),
         body: const TabBarView(
           children: [
-            Center(child: Text("Home Tab Content")),
-            Center(child: Text("Settings Tab Content")),
-            Center(child: Text("Profile Tab Content")),
+            HomeTabScreen(),
+            SettingsTabScreen(),
+            ProfileTabScreen(),
           ],
         ),
       ),
